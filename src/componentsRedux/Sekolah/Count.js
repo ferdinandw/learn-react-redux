@@ -1,6 +1,7 @@
 import React from 'react'
-// import {connect} from 'react-redux'
-export default (props) => {
+import {connect} from 'react-redux';
+
+const Count = (props) => {
     const {jumlahSiswa } = props
     return (
         <div>
@@ -8,3 +9,12 @@ export default (props) => {
         </div>
     )
 }
+
+const mapStateToProps = (state) => {
+    return{
+        jumlahSiswa: state.jumlahSiswa
+    }
+    
+}
+
+export default connect(mapStateToProps)(Count)

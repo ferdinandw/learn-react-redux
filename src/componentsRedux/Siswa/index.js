@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import {connect} from 'react-redux';
-import {TAMBAHSISWA, DROPOUT} from './../../reducer'
+import {TAMBAHSISWA, DROPOUT, TAMBAHNILAI, KURANGNILAI} from './../../reducer'
 
 const Index = (props) => {
-    const {jumlahSiswa} = props;
+    const {jumlahSiswa, nilaiSiswa} = props;
     // const { dataJumlahMurid } = props;
     // const [jumlahMurid, setJumlahMurid] = useState(props.jumlahMurid);
     // const [nilaiSiswa, setNilaiSiswa] = useState(90);
@@ -14,12 +14,12 @@ const Index = (props) => {
     const dropOut = () => {
         props.dispatch({type: DROPOUT})
     }
-    // const tambahNilai = () =>{
-    //     setNilaiSiswa(nilaiSiswa + 1)
-    // }
-    // const kurangNilai = () => {
-    //     setNilaiSiswa(nilaiSiswa - 1)
-    // }
+    const tambahNilai = () =>{
+        props.dispatch({type: TAMBAHNILAI})
+    }
+    const kurangNilai = () => {
+        props.dispatch({type: KURANGNILAI})
+    }
 
 
     // useEffect(() => {
@@ -40,21 +40,22 @@ const Index = (props) => {
             <div>
                 Jumlah murid : {jumlahSiswa}
             </div>
-            {/* <div>
+            <div>
                 Nilai : 
                 <button onClick={tambahNilai}>Tambah</button>
                 <button onClick={kurangNilai}>Kurang</button>
             </div>
             <div>
                 Nilai siswa Adalah {nilaiSiswa}
-            </div> */}
+            </div>
         </div>
     )
 }
 
 const mapStateToProps = state => {
     return {
-        jumlahSiswa: state.jumlahSiswa
+        jumlahSiswa: state.jumlahSiswa,
+        nilaiSiswa: state.nilaiSiswa
     }
 }
 
